@@ -1,12 +1,12 @@
-const { Country, Activity } = require('../db.js');
-const axios = require('axios');
-const { loadDb } = require('../loadDb');
+const { Country, Activity } = require("../db.js");
+const axios = require("axios");
+const { loadDb } = require("../loadDb");
 
 const getDbInfo = async () => {
   return await Country.findAll({
     include: {
       model: Activity,
-      attributes: ['name'],
+      attributes: ["name"],
       through: {
         attributes: [],
       },
@@ -28,7 +28,7 @@ const getCountries = async (req, res) => {
   try {
     countries.length
       ? res.status(200).json(countries)
-      : res.status(404).send('Not found... ):');
+      : res.status(404).send("Not found... ):");
   } catch (error) {
     res.status(500).send(error);
   }
@@ -40,11 +40,10 @@ const getCountryById = async (req, res) => {
   if (id) {
     const country = countries.filter((count) => count.id === id);
     country.length
-      ? res.status(200).json(country)
+      ? res.status(200).json(country[0])
       : res.status(404).send("Not Found...");
   }
 };
-
 
 const getCountryByName = async (req, res) => {
   try {
@@ -52,7 +51,7 @@ const getCountryByName = async (req, res) => {
     const countries = await getAllCountries();
 
     if (name) {
-      const matchingCountries = countries.filter(country =>
+      const matchingCountries = countries.filter((country) =>
         country.name.toLowerCase().includes(name.toLowerCase())
       );
 
@@ -70,11 +69,8 @@ const getCountryByName = async (req, res) => {
   }
 };
 
-
 module.exports = {
   getCountries,
   getCountryById,
-  getCountryByName
+  getCountryByName,
 };
-
-

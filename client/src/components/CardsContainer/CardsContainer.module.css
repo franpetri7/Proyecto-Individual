@@ -1,0 +1,82 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin: 10px;
+  min-height: calc(100vh - 40px);
+  position: relative;
+  padding-bottom: 50px;
+  column-gap: 100px;
+  row-gap: 50px;
+}
+
+.pagination {
+  position: absolute;
+  bottom: 15em;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.pagination button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px;
+  margin: 0 10px; /* Agrega un margen horizontal de 5px */
+  border: none;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 0;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.pagination button:disabled {
+  cursor: not-allowed;
+}
+
+.pagination span {
+  padding: 10px 15px;
+  margin: 0;
+  border-radius: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 14px;
+}
+
+.filtersContainer {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 20px;
+  flex-wrap: wrap;
+}
+
+.filters {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.selects {
+  font-size: 18px;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.selects option {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: black;
+}
