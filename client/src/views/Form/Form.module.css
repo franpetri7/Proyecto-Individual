@@ -1,0 +1,140 @@
+.Form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.titulo {
+  font-size: 2em;
+  margin: auto;
+}
+
+.input {
+  width: 400px;
+  height: 600px;
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 10px 9px 12px 5px rgb(0 0 0 / 50%);
+  border-radius: 15px;
+  animation: slide-up 1s ease;
+  overflow: hidden;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+.nombre {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  text-align: center;
+  font-size: 25px;
+}
+
+.difficulty {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  font-size: 25px;
+}
+.duration {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  font-size: 25px;
+}
+.season {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  font-size: 25px;
+}
+.country {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  font-size: 25px;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  font-size: 25px;
+}
+.selectedCountry {
+  font-size: 20px;
+  background-color: white;
+  align-self: center;
+  padding: 5px;
+  border-radius: 10px;
+  margin-top: 10px;
+  color: black;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.createButton {
+  height: 32px;
+  margin-top: 20px;
+  align-self: center;
+  margin: 20px;
+}
+
+.clearButton {
+  height: 32px;
+  margin-top: 20px;
+  align-self: center;
+  margin: 20px;
+}
+
+.listSelectedCountries {
+  list-style: none;
+}
+
+.homeButton {
+  height: 30px;
+}
+.deleteButton {
+  border-radius: 50px;
+  background-color: rgb(235, 154, 101);
+}
+
+.select {
+  height: 30px;
+  border-radius: 5px;
+}
+.inputName {
+  height: 25px;
+  border-radius: 5px;
+  padding: 2px;
+  font-size: 20px;
+  text-align: center;
+}
+.inputName::placeholder {
+  text-align: center;
+}
+
+.span {
+  color: rgb(255, 0, 0);
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+.error {
+  border-color: red;
+}

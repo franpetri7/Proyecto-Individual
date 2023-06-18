@@ -9,7 +9,7 @@ export const SearchBar = ({ searchCountry }) => {
   return (
     <div>
       <input
-        className={styles.inputSearch}
+        className={styles.busqueda}
         placeholder="Busca un país"
         type="search"
         onChange={handleChange}

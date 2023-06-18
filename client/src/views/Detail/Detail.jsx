@@ -17,7 +17,7 @@ const Detail = () => {
       dispatch(clearDetail());
     };
   }, [dispatch, id]);
-
+  console.log(country);
   return (
     <div className={styles.container}>
       <div className={styles.detailContainer}>

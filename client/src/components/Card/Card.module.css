@@ -13,13 +13,15 @@
 }
 
 .cardImg {
-  max-width: 10em;
-  max-height: 10em;
-  margin-top: 15px;
+  height: 130px;
+  max-width: 200px;
+  width: 200px;
+  object-fit: cover;
+  width: 100%;
   border-radius: 10px;
 }
 
 .navlink {
   text-decoration: none;
-  color: white;
+  color: rgb(37, 35, 47);
 }

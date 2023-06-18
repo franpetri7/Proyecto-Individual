@@ -1,8 +1,19 @@
-.inputSearch {
-  height: 35px;
-  border-radius: 8px;
-  padding: 4px;
-  background-color: rgba(255, 255, 255, 0.2);
-  color: white;
-  font-size: 20px;
+.busqueda {
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  background-color: #eaeaea;
+  color: #333333;
+  font-size: 18px;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.busqueda::placeholder {
+  color: #999999;
+}
+
+.busqueda:focus {
+  background-color: #d5d5d5;
 }

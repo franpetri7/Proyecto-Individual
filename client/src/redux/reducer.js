@@ -5,7 +5,7 @@ import {
   GET_COUNTRY_BY_NAME,
   CLEAR_DETAIL,
   BY_CONTINENT,
-  // BY_ACTIVITY,
+  BY_ACTIVITY,
   BY_NAME,
   BY_POPULATION,
 } from "./action-types";
@@ -186,32 +186,28 @@ const rootReducer = (state = initialState, action) => {
         };
       }
 
-    // case BY_ACTIVITY:
-    //   let filterActivity;
+    case BY_ACTIVITY:
+      // eslint-disable-next-line no-case-declarations
+      let filterActivity;
 
-    //   if (action.payload === "All") {
-    //     if (state.countries.some((country) => country.Activities.length > 0)) {
-    //       // Si hay países con actividades, se filtran los países que tienen actividades
-    //       filterActivity = state.countries.filter(
-    //         (country) => country.Activities.length > 0
-    //       );
-    //     } else {
-    //       // Si no hay países con actividades, no se muestra ningún país
-    //       filterActivity = [];
-    //     }
-    //   } else {
-    //     // Se filtran los países que tienen la actividad seleccionada
-    //     filterActivity = state.countries.filter((country) =>
-    //       country.Activities.some(
-    //         (activity) => activity.Nombre === action.payload
-    //       )
-    //     );
-    //   }
+      if (action.payload === "All") {
+        filterActivity = state.countries.filter(
+          (country) => country.Activities.length > 0
+        );
+      } else {
+        filterActivity = state.countries.filter((country) => {
+          return country.Activities.some(
+            (activity) => activity.name === action.payload
+          );
+        });
+      }
 
-    //   return {
-    //     ...state,
-    //     filteredCountries: filterActivity,
-    //   };
+      // Resto del código del reducer
+
+      return {
+        ...state,
+        filteredCountries: filterActivity,
+      };
 
     default:
       return { ...state };

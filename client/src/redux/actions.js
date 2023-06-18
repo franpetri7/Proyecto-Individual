@@ -29,6 +29,7 @@ export const getCountry = (id) => {
   return async function (dispatch) {
     const apiData = await axios.get(`${endpoint}/countries/${id}`);
     const country = apiData.data;
+    console.log(country);
     dispatch({
       type: GET_COUNTRY,
       payload: country,

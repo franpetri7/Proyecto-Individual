@@ -12,41 +12,38 @@ import {
 } from "../../redux/actions";
 
 const CardsContainer = () => {
-  const countriesGlobal = useSelector((state) => state.countries);
+  const countriesAll = useSelector((state) => state.countries);
   const activities = useSelector((state) => state.activities);
-  const filterCountries = useSelector((state) => state.filteredCountries);
-  // Estado countries
+  const countriesFilter = useSelector((state) => state.filteredCountries);
+  // Estado de countries
   const [countries, setCountries] = useState([]);
-  // Estado currentPage
-  const itemsPerPage = 10;
-  const [currentPage, setCurrentPage] = useState(1);
+  // Estado paginado
+  const ItemsPorPag = 10;
+  const [PagPresente, setPagPresente] = useState(1);
 
   // Calcular el índice del primer y último país en la página actual
-  const indexOfLastCountry = currentPage * itemsPerPage;
-  const indexOfFirstCountry = indexOfLastCountry - itemsPerPage;
-  const viewCountries = countries.slice(
-    indexOfFirstCountry,
-    indexOfLastCountry
-  );
+  const UltimoPais = PagPresente * ItemsPorPag;
+  const PrimerPais = UltimoPais - ItemsPorPag;
+  const viewCountries = countries.slice(PrimerPais, UltimoPais);
 
   useEffect(() => {
-    setCountries(countriesGlobal);
-  }, [countriesGlobal]);
+    setCountries(countriesAll);
+  }, [countriesAll]);
 
   useEffect(() => {
-    setCountries(filterCountries);
-    setCurrentPage(1);
-  }, [filterCountries]);
+    setCountries(countriesFilter);
+    setPagPresente(1);
+  }, [countriesFilter]);
 
   const dispatch = useDispatch();
 
   // Cambiar de página
-  const goToPreviousPage = () => {
-    setCurrentPage((prevPage) => prevPage - 1);
+  const AnteriorPag = () => {
+    setPagPresente((prevPage) => prevPage - 1);
   };
 
-  const goToNextPage = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
+  const ProximaPag = () => {
+    setPagPresente((prevPage) => prevPage + 1);
   };
 
   const filterByContinent = (e) => {
@@ -55,43 +52,45 @@ const CardsContainer = () => {
     if (e.target.value === "All") {
       setCountries([...countries]);
     } else {
-      setCountries([...filterCountries]);
+      setCountries([...countriesFilter]);
     }
-    e.target.value = "";
   };
-
   const orderName = (e) => {
     dispatch(orderByName(e.target.value));
-    e.target.value = "";
   };
 
   const orderPopulation = (e) => {
     dispatch(orderByPopulation(e.target.value));
-    e.target.value = "";
   };
 
   const filterByActivity = (e) => {
-    dispatch(activityFilter(e.target.value));
-    if (e.target.value === "All") {
-      setCountries([...countries]);
+    const selectedActivity = e.target.value;
+    dispatch(activityFilter(selectedActivity));
+
+    if (selectedActivity === "All") {
+      setCountries([...countriesAll]);
     } else {
-      setCountries([...filterCountries]);
+      const filteredCountries = countriesAll.filter((country) =>
+        country.Activities.some(
+          (activity) => activity.name === selectedActivity
+        )
+      );
+      setCountries([...filteredCountries]);
     }
-    e.target.value = "";
   };
 
   let NewActivities;
 
   if (Array.isArray(activities)) {
+    console.log(activities);
     NewActivities = activities.filter(
-      (obj, index, arr) =>
-        index === arr.findIndex((t) => t.Nombre === obj.Nombre)
+      (obj, index, arr) => index === arr.findIndex((t) => t.name === obj.name)
     );
   }
 
   const searchCountry = (name) => {
     dispatch(getCountryByName(name));
-    setCountries([...filterCountries]);
+    setCountries([...countriesFilter]);
   };
 
   return (
@@ -132,7 +131,7 @@ const CardsContainer = () => {
 
           <select
             className={style.selects}
-            name="activity"
+            name="Activity"
             onChange={filterByActivity}
           >
             <option value="" hidden>
@@ -143,8 +142,8 @@ const CardsContainer = () => {
             {Array.isArray(NewActivities) ? (
               NewActivities.map((activity) => {
                 return (
-                  <option key={activity.id} value={activity.Nombre}>
-                    {activity.Nombre}
+                  <option key={activity.id} value={activity.name}>
+                    {activity.name}
                   </option>
                 );
               })
@@ -173,22 +172,18 @@ const CardsContainer = () => {
         <div className={style.pagination}>
           {/* Botón de retroceso */}
           <button
-            onClick={goToPreviousPage}
-            disabled={currentPage === 1}
+            onClick={AnteriorPag}
+            disabled={PagPresente === 1}
             className={style.paginationbutton}
           >
             Retroceder
           </button>
-
           {/* Número de página actual */}
-          <span className={style.pageNumber}>{currentPage}</span>
-
+          <span className={style.pageNumber}>{PagPresente}</span>
           {/* Botón de avance */}
           <button
-            onClick={goToNextPage}
-            disabled={
-              currentPage === Math.ceil(countries.length / itemsPerPage)
-            }
+            onClick={ProximaPag}
+            disabled={PagPresente === Math.ceil(countries.length / ItemsPorPag)}
             className={style.paginationButton}
           >
             Avanzar
