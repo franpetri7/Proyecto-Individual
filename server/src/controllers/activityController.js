@@ -1,46 +1,39 @@
-const { Country, Activity } = require('../db.js');
+const { Country, Activity } = require("../db");
 
-const addActivity = async (req, res) => {
+const getActivities = async (req, res) => {
   try {
-    const { name, difficulty, duration, season, } = req.body;
-    console.log('Se agregara la siguiente actividad', req.body);
-
-    const validateActivity = await Activity.findOne({
-      where: {
-        name: name,
-      },
-    });
-
-    if (!name || !difficulty || !duration || !season) {
-      res.status(404).json('Porfavor, completa los campos.');
-    }
-
-    if (validateActivity) {
-      res.status(404).json('Esta actividad ya existe');
-    } else {
-      const {id} = req.body;
-      const newActivity = await Activity.create({
-        id,
-        name,
-        difficulty,
-        duration,
-        season,
-      });
-
-      res.status(200).json(newActivity);
-    }
+    const allActivities = await Activity.findAll();
+    if (!allActivities.length) res.status(200).send("No hay actividades aún");
+    else res.status(200).json(allActivities);
   } catch (error) {
-    console.log('error', error);
-    res.status(500).send(error);
+    res.status(400).json({ error: error.message });
   }
 };
 
-const getActivities = async (req, res) => {
-  let activity = await Activity.findAll();
-  res.status(200).send(activity);
+const addActivities = async (req, res) => {
+  const { id, name, difficulty, duration, season, countries } = req.body;
+
+  try {
+    const activity = await Activity.create({
+      id,
+      name,
+      difficulty,
+      duration,
+      season,
+    });
+
+    const activitiesToAdd = await Country.findAll({
+      where: { name: countries },
+    });
+    await activity.addCountry(activitiesToAdd);
+
+    res.status(200).send("Posteo exitoso");
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
 module.exports = {
-  addActivity,
   getActivities,
+  addActivities,
 };

@@ -17,7 +17,7 @@ const Detail = () => {
       dispatch(clearDetail());
     };
   }, [dispatch, id]);
-  console.log(country);
+  console.log(country.Activities);
   return (
     <div className={styles.container}>
       <div className={styles.detailContainer}>
@@ -40,7 +40,7 @@ const Detail = () => {
                 return (
                   <div className={styles.activities} key={activity.id}>
                     <h3>{activity.name.toUpperCase()}</h3>
-                    <p>Difficulty: {activity.difficulty} (1-5)</p>
+                    <p>Difficulty: {activity.difficulty}</p>
                     <p>Duration: {activity.duration} hours</p>
                     <p>Season: {activity.season}</p>
                   </div>
