@@ -82,7 +82,6 @@ const CardsContainer = () => {
   let NewActivities;
 
   if (Array.isArray(activities)) {
-    console.log(activities);
     NewActivities = activities.filter(
       (obj, index, arr) => index === arr.findIndex((t) => t.name === obj.name)
     );

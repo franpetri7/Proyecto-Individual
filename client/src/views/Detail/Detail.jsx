@@ -17,7 +17,6 @@ const Detail = () => {
       dispatch(clearDetail());
     };
   }, [dispatch, id]);
-  console.log(country.Activities);
   return (
     <div className={styles.container}>
       <div className={styles.detailContainer}>
