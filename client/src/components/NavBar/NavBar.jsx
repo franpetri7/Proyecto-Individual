@@ -5,10 +5,13 @@ const NavBar = () => {
   return (
     <div className={styles.mainContainer}>
       <NavLink className={styles.links} to="/home">
-        HOME
+        HOME PAGE!
       </NavLink>
       <NavLink className={styles.links} to="/form">
-        ACTIVITY
+        CREA TU ACTIVIDAD
+      </NavLink>
+      <NavLink className={styles.links} to="/about">
+        ABOUT
       </NavLink>
     </div>
   );
