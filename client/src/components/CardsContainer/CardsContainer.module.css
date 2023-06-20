@@ -72,12 +72,12 @@
 .selects {
   font-size: 16px;
   border-radius: 5px;
-  background-color: #555555;
+  background-color: #999696;
   color: white;
   padding: 5px 10px;
 }
 
 .selects option {
-  background-color: #555555;
+  background-color: #999696;
   color: white;
 }

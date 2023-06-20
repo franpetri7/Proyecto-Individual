@@ -9,6 +9,7 @@
 .titulo {
   font-size: 2em;
   margin: auto;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
 
 .input {
@@ -17,7 +18,7 @@
   padding: 20px 20px;
   display: flex;
   flex-direction: column;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.5);
   box-shadow: 10px 9px 12px 5px rgb(0 0 0 / 50%);
   border-radius: 15px;
   animation: slide-up 1s ease;
@@ -38,32 +39,42 @@
   flex-direction: column;
   align-self: center;
   text-align: center;
-  font-size: 25px;
+  font-size: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  font-weight: 500;
 }
 
 .difficulty {
   display: flex;
   flex-direction: column;
   align-self: center;
-  font-size: 25px;
+  font-size: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  font-weight: 500;
 }
 .duration {
   display: flex;
   flex-direction: column;
   align-self: center;
-  font-size: 25px;
+  font-size: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  font-weight: 500;
 }
 .season {
   display: flex;
   flex-direction: column;
   align-self: center;
-  font-size: 25px;
+  font-size: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  font-weight: 500;
 }
 .country {
   display: flex;
   flex-direction: column;
   align-self: center;
-  font-size: 25px;
+  font-size: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  font-weight: 500;
 }
 .list {
   display: flex;
@@ -126,6 +137,13 @@
 }
 .inputName::placeholder {
   text-align: center;
+}
+
+.span {
+  color: rgb(255, 0, 0);
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
 }
 
 .span {

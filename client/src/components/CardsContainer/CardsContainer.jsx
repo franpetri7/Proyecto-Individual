@@ -49,7 +49,7 @@ const CardsContainer = () => {
   const filterByContinent = (e) => {
     dispatch(continentFilter(e.target.value));
 
-    if (e.target.value === "All") {
+    if (e.target.value === "Todos") {
       setCountries([...countries]);
     } else {
       setCountries([...countriesFilter]);
@@ -67,7 +67,7 @@ const CardsContainer = () => {
     const selectedActivity = e.target.value;
     dispatch(activityFilter(selectedActivity));
 
-    if (selectedActivity === "All") {
+    if (selectedActivity === "Todos") {
       setCountries([...countriesAll]);
     } else {
       const filteredCountries = countriesAll.filter((country) =>
@@ -101,20 +101,20 @@ const CardsContainer = () => {
         <div className={style.filters}>
           <select className={style.selects} onChange={filterByContinent}>
             <option value="" hidden>
-              Continent
+              Continente
             </option>
-            <option value="All">All</option>
+            <option value="Todos">Todos</option>
             <option value="Africa">Africa</option>
-            <option value="North America">North America</option>
-            <option value="South America">South America</option>
+            <option value="Norte America">Norte America</option>
+            <option value="Sur America">Sur America</option>
             <option value="Asia">Asia</option>
-            <option value="Europe">Europe</option>
+            <option value="Europa">Europa</option>
             <option value="Oceania">Oceania</option>
           </select>
 
           <select className={style.selects} onChange={orderName}>
             <option value="" hidden>
-              Order
+              Ordena
             </option>
             <option value="Ascendente">A - Z</option>
             <option value="Descendente">Z - A</option>
@@ -122,10 +122,10 @@ const CardsContainer = () => {
 
           <select className={style.selects} onChange={orderPopulation}>
             <option value="" hidden>
-              Population
+              Poblacion
             </option>
-            <option value="Ascendente">More population</option>
-            <option value="Descendente">Less population</option>
+            <option value="Ascendente">Mas poblacion</option>
+            <option value="Descendente">Menor poblacion</option>
           </select>
 
           <select
@@ -134,9 +134,9 @@ const CardsContainer = () => {
             onChange={filterByActivity}
           >
             <option value="" hidden>
-              Activity
+              Actividad
             </option>
-            <option value="All">All</option>
+            <option value="Todos">All</option>
 
             {Array.isArray(NewActivities) ? (
               NewActivities.map((activity) => {
@@ -148,7 +148,7 @@ const CardsContainer = () => {
               })
             ) : (
               <option value="" disabled>
-                Create a new activity
+                Crea una nueva actividad
               </option>
             )}
           </select>

@@ -91,7 +91,6 @@ const Form = () => {
     e.preventDefault();
     if (formComplete === true) {
       await axios.post(endpoint + "/activities", form);
-      console.log(form);
       setCrear("La actividad se creo exitosamente");
     }
     clearForm();

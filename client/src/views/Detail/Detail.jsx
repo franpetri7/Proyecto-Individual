@@ -22,7 +22,7 @@ const Detail = () => {
       <div className={styles.detailContainer}>
         <div className={styles.information}>
           <img className={styles.flagImg} src={country?.img} alt="flag" />
-          <h3>id: {country?.id}</h3>
+          <h3>ID: {country?.id}</h3>
           <h3>Nombre: {country?.name}</h3>
           <h3>Continente: {country?.continent}</h3>
           <h3>Capital: {country?.capital}</h3>
@@ -39,9 +39,9 @@ const Detail = () => {
                 return (
                   <div className={styles.activities} key={activity.id}>
                     <h3>{activity.name.toUpperCase()}</h3>
-                    <p>Difficulty: {activity.difficulty}</p>
-                    <p>Duration: {activity.duration} hours</p>
-                    <p>Season: {activity.season}</p>
+                    <p>Dificultad: {activity.difficulty}</p>
+                    <p>Duracion: {activity.duration} Horas</p>
+                    <p>Temporada: {activity.season}</p>
                   </div>
                 );
               })
