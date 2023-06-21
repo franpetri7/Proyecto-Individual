@@ -1,16 +1,20 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { validate } from "./validation";
 import styles from "./Form.module.css";
+import { getCountries } from "../../redux/actions";
 
 const Form = () => {
   const duration = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
     22, 23, 24,
   ];
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCountries());
+  }, []);
   const countriesAll = useSelector((state) => state.countries).sort((a, b) => {
     if (a.name < b.name) {
       return -1;
@@ -169,9 +173,9 @@ const Form = () => {
 
           <div className={styles.country}>
             <div className={styles.listCountries}>
-              <label>País</label>
+              <label>Paises</label>
               <select className={styles.selects} onChange={countrySel}>
-                <option>Selecciona el pais</option>
+                <option>Selecciona el pais para tu actividad</option>
                 {countriesAll.map((country) => (
                   <option key={country.id} value={country.name}>
                     {country.name}
@@ -209,7 +213,7 @@ const Form = () => {
               Limpiar
             </button>
           </div>
-          <span>{crear}</span>
+          <span className={styles.spanCrear}>{crear}</span>
 
           <NavLink to="/home">
             <button className={styles.homeButton}>Back to Home</button>

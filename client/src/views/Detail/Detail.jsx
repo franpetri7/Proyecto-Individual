@@ -38,7 +38,7 @@ const Detail = () => {
               country.Activities.map((activity) => {
                 return (
                   <div className={styles.activities} key={activity.id}>
-                    <h3>{activity.name.toUpperCase()}</h3>
+                    <h3 key={activity.name}>{activity.name.toUpperCase()}</h3>
                     <p>Dificultad: {activity.difficulty}</p>
                     <p>Duracion: {activity.duration} Horas</p>
                     <p>Temporada: {activity.season}</p>

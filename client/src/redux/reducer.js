@@ -190,7 +190,7 @@ const rootReducer = (state = initialState, action) => {
       // eslint-disable-next-line no-case-declarations
       let filterActivity;
 
-      if (action.payload === "All") {
+      if (action.payload === "Todos") {
         filterActivity = state.countries.filter(
           (country) => country.Activities.length > 0
         );

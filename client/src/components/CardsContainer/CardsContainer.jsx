@@ -12,6 +12,7 @@ import {
 } from "../../redux/actions";
 
 const CardsContainer = () => {
+  //Estados globales
   const countriesAll = useSelector((state) => state.countries);
   const activities = useSelector((state) => state.activities);
   const countriesFilter = useSelector((state) => state.filteredCountries);
@@ -103,12 +104,12 @@ const CardsContainer = () => {
             <option value="" hidden>
               Continente
             </option>
-            <option value="Todos">Todos</option>
+            <option value="All">Todos</option>
             <option value="Africa">Africa</option>
-            <option value="Norte America">Norte America</option>
-            <option value="Sur America">Sur America</option>
+            <option value="North America">Norte America</option>
+            <option value="South America">Sur America</option>
             <option value="Asia">Asia</option>
-            <option value="Europa">Europa</option>
+            <option value="Europe">Europa</option>
             <option value="Oceania">Oceania</option>
           </select>
 
@@ -136,7 +137,7 @@ const CardsContainer = () => {
             <option value="" hidden>
               Actividad
             </option>
-            <option value="Todos">All</option>
+            <option value="Todos">Todos</option>
 
             {Array.isArray(NewActivities) ? (
               NewActivities.map((activity) => {
@@ -148,7 +149,7 @@ const CardsContainer = () => {
               })
             ) : (
               <option value="" disabled>
-                Crea una nueva actividad
+                No hay actividades
               </option>
             )}
           </select>

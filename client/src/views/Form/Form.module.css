@@ -76,7 +76,7 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
   font-weight: 500;
 }
-.list {
+.listCountries {
   display: flex;
   flex-direction: column;
   align-self: center;
@@ -155,4 +155,7 @@
 
 .error {
   border-color: red;
+}
+.spanCrear {
+  text-shadow: 2px 2px 4px rgb(0, 0, 0);
 }
